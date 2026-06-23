@@ -110,3 +110,22 @@ def countUpto(n):
 
 abc = countUpto(5)
 print(abc)
+
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
+
+
+gen=my_generator()
+
+try:
+        
+    print(next(gen))
+    print(next(gen))
+
+    print(next(gen))
+    print(next(gen))
+    
+except StopIteration:
+      print("oops")
