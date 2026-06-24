@@ -4,3 +4,4 @@ INFO:root:Running add with arguments (4, 10)
 INFO:root:Running add with arguments (1, 2, 7)
 INFO:root:Running sub with arguments (10, 5)
 INFO:root:Running add with arguments (4, 10)
+INFO:root:ran with args: ('abdur', 22) and kwargs: {}
