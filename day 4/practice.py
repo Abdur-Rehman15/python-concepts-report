@@ -32,7 +32,7 @@ def generate_random(target):
     return True
 
 
-# generate_random(5)
+generate_random(5)
 
 # ==========practice 2===========
 # Build a custom context manager measuring the execution time of a code block.
@@ -57,27 +57,27 @@ def printNums(n):
         print(i)
 
 
-# with MeasureTime():
-#     printNums(5)
+with MeasureTime():
+    printNums(5)
 
 # ==========practice 3=============
 # Perform read/transform/write operations on a JSON file.
 
-# import json
+import json
 
-# try:
-#     with open("inventory_data.json", "r") as file:
-#         data = json.load(file)
+try:
+    with open("inventory_data.json", "r") as file:
+        data = json.load(file)
 
-#     # i'm taking example that double the quantity of each item
-#     for item in data:
-#         item["quantity"] *= 2
+    # i'm taking example that double the quantity of each item
+    for item in data:
+        item["quantity"] *= 2
 
-#     with open("inventory_data.json", "w") as file:
-#         json.dump(data, file, indent=4)
+    with open("inventory_data.json", "w") as file:
+        json.dump(data, file, indent=4)
 
-# except FileNotFoundError:
-#     print("File not found")
+except FileNotFoundError:
+    print("File not found")
 
 # ==========checkpoint=============
 # Develop a @cache_result decorator caching and returning prior computed values for identical inputs (memoization)
