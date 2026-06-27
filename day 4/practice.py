@@ -1,0 +1,106 @@
+# ==========practice 1===========
+# Implement a @retry decorator to re-execute a function upon failure up to N times
+
+import random
+from functools import wraps
+import time
+
+
+def retry(N):
+    def original(original_func):
+        @wraps(original_func)
+        def wrapper(*args, **kwargs):
+            attempts = N
+            while attempts > 0:
+                if original_func(*args, **kwargs) == True:
+                    break
+                attempts -= 1
+
+        return wrapper
+
+    return original
+
+
+@retry(5)
+def generate_random(target):
+    num = random.randint(1, 10)
+    print("num generated:", num)
+    if num != target:
+        print("didnt match with", target, "\n")
+        return False
+    print("matched with target")
+    return True
+
+
+# generate_random(5)
+
+# ==========practice 2===========
+# Build a custom context manager measuring the execution time of a code block.
+
+
+class MeasureTime:
+    def __init__(self):
+        pass
+
+    def __enter__(self):
+        self.time1 = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        self.time2 = time.time()
+        print("Execution time:", self.time2 - self.time1, "secs")
+        return self
+
+
+def printNums(n):
+    for i in range(n):
+        print(i)
+
+
+# with MeasureTime():
+#     printNums(5)
+
+# ==========practice 3=============
+# Perform read/transform/write operations on a JSON file.
+
+# import json
+
+# try:
+#     with open("inventory_data.json", "r") as file:
+#         data = json.load(file)
+
+#     # i'm taking example that double the quantity of each item
+#     for item in data:
+#         item["quantity"] *= 2
+
+#     with open("inventory_data.json", "w") as file:
+#         json.dump(data, file, indent=4)
+
+# except FileNotFoundError:
+#     print("File not found")
+
+# ==========checkpoint=============
+# Develop a @cache_result decorator caching and returning prior computed values for identical inputs (memoization)
+
+
+def cache_result(original_func):
+    cache={}
+    def wrapper(*args, **kwargs):
+        if args in cache:
+            result = cache[args]
+            print('cache hit')
+        else:
+            result = original_func(*args, **kwargs)
+            cache[args] = result
+            print('cache miss')
+        return result
+
+    return wrapper
+
+
+@cache_result
+def add(x, y):
+    return x + y
+
+print(add(1,2))
+print(add(1,2))
