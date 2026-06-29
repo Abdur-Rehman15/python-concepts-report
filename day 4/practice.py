@@ -134,5 +134,3 @@ print(experienced)
 salary_mean = df.groupby('Department').agg({
     'Salary':'mean'
 })
-
-print(salary_mean)
