@@ -84,15 +84,16 @@ except FileNotFoundError:
 
 
 def cache_result(original_func):
-    cache={}
+    cache = {}
+
     def wrapper(*args, **kwargs):
         if args in cache:
             result = cache[args]
-            print('cache hit')
+            print("cache hit")
         else:
             result = original_func(*args, **kwargs)
             cache[args] = result
-            print('cache miss')
+            print("cache miss")
         return result
 
     return wrapper
@@ -102,5 +103,36 @@ def cache_result(original_func):
 def add(x, y):
     return x + y
 
-print(add(1,2))
-print(add(1,2))
+
+print(add(1, 2))
+print(add(1, 2))
+
+# ==============numpy practice 1=============
+# Normalize a numeric array and extract data points above the statistical mean utilizing a boolean mask.
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+normalized = (arr - arr.min()) / (arr.max() - arr.min())
+mask = normalized > normalized.mean()
+
+filtered = normalized[mask]
+print(filtered)
+
+# ==============pandas practice 1==============
+
+import pandas as pd
+df=pd.read_csv('employee_data.csv')
+print(df)
+
+# row filtering
+experienced = df[df['Experience_Years'] > 3]
+print(experienced)
+
+# groupby
+salary_mean = df.groupby('Department').agg({
+    'Salary':'mean'
+})
+
+print(salary_mean)

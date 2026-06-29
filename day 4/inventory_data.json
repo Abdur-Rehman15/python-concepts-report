@@ -2,36 +2,36 @@
     {
         "name": "Laptop",
         "price": 1200,
-        "quantity": 16
+        "quantity": 2048
     },
     {
         "name": "Mouse",
         "price": 25,
-        "quantity": 100
+        "quantity": 12800
     },
     {
         "name": "Keyboard",
         "price": 45,
-        "quantity": 60
+        "quantity": 7680
     },
     {
         "name": "Monitor",
         "price": 300,
-        "quantity": 30
+        "quantity": 3840
     },
     {
         "name": "USB Cable",
         "price": 10,
-        "quantity": 200
+        "quantity": 25600
     },
     {
         "name": "Headphones",
         "price": 80,
-        "quantity": 40
+        "quantity": 5120
     },
     {
         "name": "Webcam",
         "price": 70,
-        "quantity": 24
+        "quantity": 3072
     }
 ]
